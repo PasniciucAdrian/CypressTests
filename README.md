@@ -6,11 +6,9 @@ This project demonstrates a simple **end-to-end (E2E)** test using [Cypress](htt
 
 ---
 
-<<<<<<< HEAD
 ## Purpose of the Test
 =======
-##  Purpose of the Test
->>>>>>> 221d8e5ea361e59d005e6574a2566596276d6690
+
 
 The goal is to simulate a real user journey that includes:
 
@@ -23,11 +21,9 @@ This test showcases **cross-origin navigation** using `cy.origin()` introduced i
 
 ---
 
-<<<<<<< HEAD
 ## What Is Being Tested?
 =======
-##  What Is Being Tested?
->>>>>>> 221d8e5ea361e59d005e6574a2566596276d6690
+
 
 | Step | Action | Expected Result |
 |------|--------|-----------------|
@@ -41,7 +37,6 @@ This test showcases **cross-origin navigation** using `cy.origin()` introduced i
 ## 🗂 Folder Structure
 
 ```
-<<<<<<< HEAD
 navigate-cypress-test/
 ├── cypress/
 │   ├── e2e/
@@ -60,17 +55,14 @@ my-cypress-project/
 ├── cypress.config.js
 ├── package.json
 ├── .gitignore
->>>>>>> 221d8e5ea361e59d005e6574a2566596276d6690
 └── README.md
 ```
 
 ---
 
-<<<<<<< HEAD
+
 ## Getting Started
 =======
-##  Getting Started
->>>>>>> 221d8e5ea361e59d005e6574a2566596276d6690
 
 ### 1. Install Dependencies
 
@@ -92,11 +84,9 @@ npm run cy:run
 
 ---
 
-<<<<<<< HEAD
+
 ## Sample Test File – `navigate-to-docs.cy.js`
 =======
-##  Sample Test File – `cypress.cy.js`
->>>>>>> 221d8e5ea361e59d005e6574a2566596276d6690
 
 ```javascript
 describe('Navigate to Docs and verify element on a different domain', () => {
@@ -125,21 +115,16 @@ describe('Navigate to Docs and verify element on a different domain', () => {
 
 ---
 
-<<<<<<< HEAD
 ## Why This Test Is Useful
 =======
-##  Why This Test Is Useful
->>>>>>> 221d8e5ea361e59d005e6574a2566596276d6690
+
 
 This test helps you:
+
 - Learn to handle cookie banners
 - Practice switching between different domains in Cypress
 - Understand real-world navigation scenarios in UI testing
-<<<<<<< HEAD
 - Verify important branding/identity elements are visible
-=======
-- Verify important branding/identity elements are visible
+
 
 ---
-
->>>>>>> 221d8e5ea361e59d005e6574a2566596276d6690
