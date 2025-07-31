@@ -7,7 +7,6 @@ This project demonstrates a simple **end-to-end (E2E)** test using [Cypress](htt
 ---
 
 ## Purpose of the Test
-=======
 
 
 The goal is to simulate a real user journey that includes:
