@@ -22,7 +22,6 @@ This test showcases **cross-origin navigation** using `cy.origin()` introduced i
 ---
 
 ## What Is Being Tested?
-=======
 
 
 | Step | Action | Expected Result |
@@ -39,30 +38,22 @@ This test showcases **cross-origin navigation** using `cy.origin()` introduced i
 ```
 navigate-cypress-test/
 ├── cypress/
-│   ├── e2e/
-│   │   └── 3-navigate-on-cypress/
-│   │       └── navigate-to-docs.cy.js
-│   ├── fixtures/
-│   └── support/
-├── cypress.config.js
-├── package.json
-=======
-my-cypress-project/
-├── cypress/
 │   └── e2e/
-│       └── TestCypress/
-│           └── cypress.cy.js
+│       ├── 1-getting-started/
+│       ├── 2-advanced-examples/
+│       └── 3-navigate-on-cypress/
 ├── cypress.config.js
 ├── package.json
-├── .gitignore
+├── package-lock.json
 └── README.md
+
 ```
 
 ---
 
 
 ## Getting Started
-=======
+
 
 ### 1. Install Dependencies
 
@@ -86,7 +77,7 @@ npm run cy:run
 
 
 ## Sample Test File – `navigate-to-docs.cy.js`
-=======
+
 
 ```javascript
 describe('Navigate to Docs and verify element on a different domain', () => {
@@ -116,7 +107,6 @@ describe('Navigate to Docs and verify element on a different domain', () => {
 ---
 
 ## Why This Test Is Useful
-=======
 
 
 This test helps you:
