@@ -1,119 +1,78 @@
-# ✅ Cypress Test Project – Navigation and Cross-Domain Verification
+# 🧪 Cypress Test Automation – Project Overview
 
-[![Cypress](https://img.shields.io/badge/tested%20with-Cypress-4fc08d.svg)](https://www.cypress.io/)
+This project contains organized Cypress test examples meant to help understand how Cypress works and how to write functional end-to-end (E2E) tests efficiently.
 
-This project demonstrates a simple **end-to-end (E2E)** test using [Cypress](https://www.cypress.io/), focused on navigating between domains and verifying UI behavior.
+## 🚀 What is Cypress?
 
----
+Cypress is a powerful front-end testing tool built for modern web applications. It is especially useful for:
 
-## Purpose of the Test
+- End-to-end (E2E) testing
+- Integration testing
+- Unit testing (limited)
 
+Unlike Selenium, Cypress runs directly in the browser, giving it native access to every object, DOM element, and event. This allows for faster and more reliable tests with easy debugging.
 
-The goal is to simulate a real user journey that includes:
+## 🎯 Project Purpose
 
-- Visiting the official Cypress homepage: `https://www.cypress.io`
-- Accepting cookie preferences (if the popup appears)
-- Clicking on the "Docs" link which redirects the user to another domain: `https://docs.cypress.io`
-- Verifying that the **Docs page loads successfully** and the Cypress logo (`.navbar__brand`) is visible
+The goal of this project is to:
 
-This test showcases **cross-origin navigation** using `cy.origin()` introduced in Cypress v10+.
+1. Learn and demonstrate Cypress fundamentals.
+2. Create reusable and well-structured test cases.
+3. Document each test individually with dedicated `README.md` files.
+4. Maintain a scalable and understandable folder structure.
 
----
+Each test example resides in its own folder under `cypress/e2e/`, and each has:
+- A `.cy.js` test file
+- A local `README.md` explaining that specific test
 
-## What Is Being Tested?
-
-
-| Step | Action | Expected Result |
-|------|--------|-----------------|
-| 1 | Visit homepage | Page loads without errors |
-| 2 | Handle cookie popup | Button is visible and clicked |
-| 3 | Click Docs link | Switches to `docs.cypress.io` |
-| 4 | Wait for Docs page to load | Cypress logo is present on screen |
+This general `README.md` helps you understand the overall structure and navigate through the examples easily.
 
 ---
 
-## 🗂 Folder Structure
+## 📁 Folder Structure
 
 ```
 navigate-cypress-test/
+│
 ├── cypress/
 │   └── e2e/
-│       ├── 1-getting-started/
-│       ├── 2-advanced-examples/
-│       └── 3-navigate-on-cypress/
-├── cypress.config.js
-├── package.json
-├── package-lock.json
-└── README.md
-
+│       ├── 1-getting-started/           # (Reserved for future basic examples)
+│       ├── 2-advanced-examples/         # (Reserved for future advanced usage)
+│       └── 3-navigate-on-cypress/       # Current example folder
+│           ├── navigate-to-docs.cy.js   # Cypress test file
+│           └── README.md                # Documentation for this test
+│
+├── cypress.config.js                    # Cypress configuration
+├── package.json                         # Project dependencies and scripts
+├── package-lock.json                    # Lock file for reproducible installs
+└── README.md                            # General documentation (this file)
 ```
 
 ---
 
+## 🔗 Test Modules
 
-## Getting Started
+### ✅ [Test 3 – Navigate on Cypress](./cypress/e2e/3-navigate-on-cypress/README.md)
 
+This test covers basic navigation within Cypress using `cy.visit()` and asserts to verify the URL and page content.
 
-### 1. Install Dependencies
+---
+
+## 📦 How to Run This Project
+
+1. Install dependencies:
 
 ```bash
 npm install
 ```
 
-### 2. Open the Cypress Test Runner (GUI mode)
+2. Open Cypress Test Runner:
 
 ```bash
-npm run cy:open
+npx cypress open
 ```
 
-Or run the test in headless mode:
-
-```bash
-npm run cy:run
-```
+3. Choose a test (e.g., from folder `3-navigate-on-cypress`) and run it.
 
 ---
 
-
-## Sample Test File – `navigate-to-docs.cy.js`
-
-
-```javascript
-describe('Navigate to Docs and verify element on a different domain', () => {
-  it('Visits the site and accesses the Docs page', () => {
-    cy.visit('https://www.cypress.io/');
-
-    // Accept cookies if the popup is visible
-    cy.get('button:contains("Accept All")', { timeout: 10000 }).then(($btn) => {
-      if ($btn.is(':visible')) {
-        cy.wrap($btn).click();
-      }
-    });
-
-    // Navigate to Docs (different domain)
-    cy.get('#dropdownDocs')
-      .should('have.attr', 'href')
-      .then((href) => {
-        cy.origin('https://docs.cypress.io', () => {
-          cy.visit('/app/get-started/why-cypress');
-          cy.get('.navbar__brand').should('exist');
-        });
-      });
-  });
-});
-```
-
----
-
-## Why This Test Is Useful
-
-
-This test helps you:
-
-- Learn to handle cookie banners
-- Practice switching between different domains in Cypress
-- Understand real-world navigation scenarios in UI testing
-- Verify important branding/identity elements are visible
-
-
----
