@@ -43,13 +43,15 @@ CypressTests/
 │
 ├── cypress/
 │   └── e2e/
-│       ├── 1-getting-started/            # Reserved for future basic examples
-│       ├── 2-advanced-examples/          # Reserved for future advanced usage
+│       ├── 1-getting-started/            # Reserved for Cypress example specs
+│       ├── 2-advanced-examples/          # Reserved for Cypress example specs
 │       ├── 3-navigate-on-cypress/        # Navigation test example
 │       │   └── README.md
-│       ├── 4-linkedin-tests/             # Login test using env variables
+│       ├── 4-linkedIn-tests/             # Login test using env variables
 │       │   └── README.md
-│       └── 5-exempleOf/                  # Miscellaneous test examples
+│       ├── 5-exempleOf/                  # Miscellaneous test examples
+│       │   └── README.md
+│       └── 6-saucedemo-tests/            # SauceDemo automation suite
 │           └── README.md
 │
 ├── cypress.config.js                     # Cypress configuration
@@ -82,6 +84,19 @@ This folder contains several standalone examples:
 - DOM class checks
 - Timed waits
 - News page element tests
+
+### ✅ [Test 6 – SauceDemo Automation Suite](./cypress/e2e/6-saucedemo-tests/README.md)
+Full flow on **https://www.saucedemo.com/**:
+- Invalid login (error message)
+- Valid login with `standard_user` / `secret_sauce`
+- Logout
+- Open/close side menu
+- Add product to cart
+- Remove product from cart / verify empty cart
+- Complete checkout (Finish order)
+- Open product details page
+- **Back to products** navigates back to listing
+
 
 ---
 
