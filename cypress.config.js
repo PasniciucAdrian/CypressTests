@@ -4,8 +4,9 @@ module.exports = defineConfig({
   e2e: {
     baseUrl: 'https://www.cypress.io',
 
-    experimentalOriginDependencies: true,
+    chromeWebSecurity: false, // to allow cross-origin requests
 
+    experimentalOriginDependencies: true,
 
     setupNodeEvents(on, config) {
       // plugins - we don't use any for now

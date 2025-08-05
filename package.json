@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
   "name": "navigate-cypress-test",
-=======
-  "name": "my-cypress-project",
->>>>>>> 221d8e5ea361e59d005e6574a2566596276d6690
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
