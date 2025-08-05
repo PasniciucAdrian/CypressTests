@@ -1,99 +1,118 @@
-# 🧪 Cypress Test Automation – Project Overview
+# ✅ Cypress Test Project – SauceDemo E2E (Login, Cart, Checkout)
 
-This project contains organized Cypress test examples meant to help understand how Cypress works and how to write functional end-to-end (E2E) tests efficiently.
+[![Cypress](https://img.shields.io/badge/tested%20with-Cypress-4fc08d.svg)](https://www.cypress.io/)
 
-## 🚀 What is Cypress?
-
-Cypress is a powerful front-end testing tool built for modern web applications. It is especially useful for:
-
-- End-to-end (E2E) testing  
-- Integration testing  
-- Unit testing (limited)
-
-Unlike Selenium, Cypress runs directly in the browser, giving it native access to every object, DOM element, and event. This allows for faster and more reliable tests with easy debugging.
-
-## 🎯 Project Purpose
-
-The goal of this project is to:
-
-1. Learn and demonstrate Cypress fundamentals.
-2. Create reusable and well-structured test cases.
-3. Document each test individually with dedicated `README.md` files.
-4. Maintain a scalable and understandable folder structure.
-
-Each test example resides in its own folder under `cypress/e2e/`, and each has:
-- A `.cy.js` test file  
-- A local `README.md` explaining that specific test
-
-This general `README.md` helps you understand the overall structure and navigate through the examples easily.
+This folder contains an end‑to‑end (E2E) Cypress flow for **https://www.saucedemo.com/** that covers login, adding to cart, checkout, and order confirmation. The scope aligns with the provided assignment (Tema Automation).
 
 ---
 
-## 📁 Folder Structure
+## Purpose of the Tests
 
-```
-CypressTests/
-│
-├── cypress/
-│   └── e2e/
-│       ├── 1-getting-started/            # Reserved for future basic examples
-│       ├── 2-advanced-examples/          # Reserved for future advanced usage
-│       ├── 3-navigate-on-cypress/        # Navigation test example
-│       │   └── README.md
-│       ├── 4-linkedin-tests/             # Login test using env variables
-│       │   └── README.md
-│       └── 5-exempleOf/                  # Miscellaneous test examples
-│           └── README.md
-│
-├── cypress.config.js                     # Cypress configuration
-├── cypress.env.json                      # Environment variables (not tracked by Git)
-├── package.json                          # Project dependencies and scripts
-├── package-lock.json                     # Lock file for reproducible installs
-└── README.md                             # General documentation (this file)
-```
+The main goals are to:
+
+- Validate **invalid and valid authentication** (error handling and success state)
+- Verify **logout** and **side-menu open/close**
+- Ensure users can **add** and **remove** products from the cart
+- Complete a full **checkout** flow and assert the **success message**
+- Open a **product details page** and navigate **Back to products**
+
+> ℹ️ The current spec demonstrates the complete purchase flow. You can keep it as a single E2E test or split it into smaller tests (recommended for maintainability).
 
 ---
 
-## 🔗 Test Modules
+## What Is Being Tested?
 
-### ✅ [Test 3 – Navigate on Cypress](./cypress/e2e/3-navigate-on-cypress/README.md)
-
-This test covers basic navigation within Cypress using `cy.visit()` and asserts to verify the URL and page content.
-
-### ✅ [Test 4 – LinkedIn Login (using env variables)](./cypress/e2e/4-linkedin-tests/README.md)
-
-This test automates a login flow for LinkedIn using `cy.get()` and reads secure credentials from the `cypress.env.json` file.
-
-### ✅ [Test 5 – Miscellaneous Examples](./cypress/e2e/5-exempleOf/README.md)
-
-This folder contains several standalone examples:
-- Verifying constants and inputs
-- Attribute selectors
-- Screenshot generation
-- DOM class checks
-- Timed waits
-- News page element tests
+| Scenario | Description |
+|---------|-------------|
+| Invalid login | Enter wrong credentials and assert the error message (to be added) |
+| Valid login | Log in with `standard_user` / `secret_sauce` and assert landing on **Products** |
+| Open/close side menu | Toggle the hamburger menu (to be added) |
+| Add product to cart | Add **Sauce Labs Backpack** and verify it in the cart |
+| Remove product from cart | Remove item and validate empty cart or absence (to be added) |
+| Checkout flow | Provide user info, continue, and **Finish** order |
+| Product details page | Open a product details page (to be added) |
+| Back to products | Use the **Back to products** button to return to listing (to be added) |
+| Logout | Log out from the side menu (to be added) |
 
 ---
 
-## 📦 How to Run This Project
+## Getting Started
 
-1. Install dependencies:
+### 1. Install Dependencies
 
 ```bash
 npm install
 ```
 
-2. Open Cypress Test Runner:
+### 2. Open the Cypress Test Runner
 
 ```bash
-npx cypress open
+npm run cy:open
 ```
 
-3. Choose a test folder (e.g., `4-linkedin-tests` or `5-exempleOf`) and run the test cases.
+Or run the spec headlessly:
+
+```bash
+npm run cy:run
+```
 
 ---
 
-## 🛡️ Note on Environment Variables
+## Sample Test Example
 
-The file `cypress.env.json` is **excluded from version control** via `.gitignore`. Be sure to create this file locally and provide your own environment credentials if needed.
+### `saucedemo.cy.js` (full purchase flow)
+
+```javascript
+describe('SauceDemo - End to End Test', () => {
+
+  it('should complete a full purchase flow', () => {
+
+    // Step 1: Visit the login page
+    cy.visit('https://www.saucedemo.com/');
+
+    // Step 2: Login with valid credentials
+    cy.get('[data-test="username"]').type('standard_user');
+    cy.get('[data-test="password"]').type('secret_sauce');
+    cy.get('[data-test="login-button"]').click();
+
+    // Step 3: Verify login was successful by checking the page title
+    cy.get('.title').should('have.text', 'Products');
+
+    // Step 4: Add a product to the cart (first one)
+    cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click();
+
+    // Step 5: Go to the cart
+    cy.get('.shopping_cart_link').click();
+
+    // Step 6: Verify the product is in the cart
+    cy.get('.inventory_item_name').should('contain.text', 'Sauce Labs Backpack');
+
+    // Step 7: Click Checkout
+    cy.get('[data-test="checkout"]').click();
+
+    // Step 8: Fill in user information
+    cy.get('[data-test="firstName"]').type('Oliv');
+    cy.get('[data-test="lastName"]').type('Tester');
+    cy.get('[data-test="postalCode"]').type('12345');
+    cy.get('[data-test="continue"]').click();
+
+    // Step 9: Finish the order
+    cy.get('[data-test="finish"]').click();
+
+    // Step 10: Verify the confirmation message
+    cy.get('.complete-header').should('have.text', 'Thank you for your order!');
+
+  });
+
+});
+```
+
+---
+
+## Why This Test Is Useful
+
+- Exercises a realistic e‑commerce path: **login → add to cart → checkout → confirmation**
+- Provides reliable **assertions** on each critical step
+- Can be expanded to cover all assignment points (invalid login, details page, back button, logout)
+
+---
