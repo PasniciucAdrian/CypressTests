@@ -1,8 +1,8 @@
-<div align="center" style="background-color:#001f3f; padding:20px;">
+<p align="center">
   <a href="https://www.cypress.io/">
-    <img src="https://raw.githubusercontent.com/cypress-io/cypress/develop/assets/cypress-logo-dark.png" alt="Cypress" width="200"/>
+    <img src="logoCypress.png" alt="Cypress" width="300"/>
   </a>
-</div>
+</p>
 
 
 #  Cypress Test Automation – Project Overview
