@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://www.cypress.io/">
-    <img src="logoCypress.png" width="300" height="100">
+    <img src="logoCypress1.png" >
 
   </a>
 </p>
