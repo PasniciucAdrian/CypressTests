@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://www.cypress.io/">
-    <img src="https://raw.githubusercontent.com/cypress-io/cypress/develop/assets/cypress-logo-dark.png" alt="Cypress" width="200"/>
+    <img src="https://i.imgur.com/bCBUoVy.png" alt="Cypress Logo Navy" width="200"/>
   </a>
 </div>
 
