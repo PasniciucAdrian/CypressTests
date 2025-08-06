@@ -1,8 +1,9 @@
 <p align="center">
   <a href="https://www.cypress.io/">
-    <img src="logoCypress.png" alt="Cypress" />
+    <img src="logoCypress.png" alt="Cypress" width="100"/>
   </a>
 </p>
+
 
 
 #  Cypress Test Automation – Project Overview
