@@ -34,63 +34,6 @@ The goal is to verify the ability to:
 
 ---
 
-## Getting Started
-
-### 1. Install Dependencies
-
-```bash
-npm install
-```
-
-### 2. Run the Test
-
-Open Cypress in GUI mode:
-
-```bash
-npm run cy:open
-```
-
-Or run in headless mode:
-
-```bash
-npm run cy:run
-```
-
----
-
-## Sample Test File – `loginLinkedIn.cy.js`
-
-```javascript
-describe('LinkedIn test', () => {
-  it('Logs into LinkedIn account', () => {
-
-    Cypress.on('uncaught:exception', () => false);
-
-    cy.visit('https://www.linkedin.com/');
-    cy.get('[action-type="ACCEPT"]').click();
-    cy.contains('a,button', /sign in/i, { timeout: 15000 }).click();
-
-    cy.get('#username').invoke('attr', 'type', 'password');
-    cy.get('#password').invoke('attr', 'type', 'password');
-
-    cy.get('#username').type(Cypress.env('linkedin_user'), { log: false });
-    cy.get('#password').type(Cypress.env('linkedin_pass'), { log: false });
-
-    cy.get('.btn__primary--large').click();
-
-    cy.get('body').then($body => {
-      if ($body.find('.secondary-action-new').length > 0) {
-        cy.get('.secondary-action-new').click();
-      }
-    });
-
-    cy.get('.profile-card-name', { timeout: 10000 }).should('be.visible');
-  });
-});
-```
-
----
-
 ## Using `cypress.env.json`
 
 To keep your credentials secure and out of your test code, you should store them in the `cypress.env.json` file.
@@ -104,14 +47,8 @@ To keep your credentials secure and out of your test code, you should store them
 }
 ```
 
-This way, the test file can access them via:
 
-```js
-Cypress.env('linkedin_user')
-Cypress.env('linkedin_pass')
-```
-
-⚠️ **Never commit `cypress.env.json` to a public repository.**
+⚠️ Never commit `cypress.env.json` to a public repository.**
 
 ---
 
